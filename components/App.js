@@ -64,5 +64,5 @@ App = React.createClass({
             xhr.send();
     })},
   getGif(searchingText, callback)
-  .then(() => callback(gif));
+  .then((response) => callback(gif));
 });
