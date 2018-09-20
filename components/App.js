@@ -63,6 +63,6 @@ App = React.createClass({
             resolve(this.response);
     })},
 
-  getGif(searchingText)
-  .then((response) => callback(gif));
+  getGif(searchingText,callback)
+  .then(response => callback(gif));
 });
