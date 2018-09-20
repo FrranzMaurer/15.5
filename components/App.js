@@ -52,8 +52,6 @@ App = React.createClass({
             xhr.open('GET', url);
             xhr.onload = function() {
                 if (xhr.status === 200) {
-                        resolve(this.response);
-                    }
                         var data = JSON.parse(xhr.responseText).data; // 4.
                         var gif = {  // 5.
                             url: data.fixed_width_downsampled_url,
@@ -62,7 +60,9 @@ App = React.createClass({
                         callback(gif);  // 6.
             };
             xhr.send();
-    )},
+            resolve(this.response);
+    })},
+
   getGif(searchingText)
   .then((response) => callback(gif));
 });
