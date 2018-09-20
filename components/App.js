@@ -44,7 +44,7 @@ App = React.createClass({
 
   getGif: function(searchingText, callback) {  // 1.
     return new Promise(
-        function(resolve, reject) {
+        function(resolve) {
             var GIPHY_PUB_KEY = 'dc6zaTOxFJmzC';
             var GIPHY_API_URL = '//api.giphy.com';
             var url = GIPHY_API_URL + '/v1/gifs/random?api_key=' + GIPHY_PUB_KEY + '&tag=' + searchingText;  // 2.
@@ -52,17 +52,18 @@ App = React.createClass({
             xhr.open('GET', url);
             xhr.onload = function() {
                 if (xhr.status === 200) {
-                    resolve(
+                        resolve(this.response);
+                    }
                         var data = JSON.parse(xhr.responseText).data; // 4.
                         var gif = {  // 5.
                             url: data.fixed_width_downsampled_url,
                             sourceUrl: data.url
                         };
                         callback(gif);  // 6.
-                )}
+                }
             };
             xhr.send();
     })},
-  getGif(searchingText, callback)
+  getGif(searchingText)
   .then((response) => callback(gif));
 });
