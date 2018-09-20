@@ -58,12 +58,11 @@ App = React.createClass({
                         var gif = {  // 5.
                             url: data.fixed_width_downsampled_url,
                             sourceUrl: data.url
-                        };
+                        }};
                         callback(gif);  // 6.
-                }
             };
             xhr.send();
-    })},
+    )},
   getGif(searchingText)
   .then((response) => callback(gif));
 });
