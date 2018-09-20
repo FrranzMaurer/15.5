@@ -42,7 +42,7 @@ App = React.createClass({
     }.bind(this));
   },
 
-  getGif: function(searchingText, callback) {  // 1.
+  getGif: function(searchingText) {  // 1.
     return new Promise(
         function(resolve) {
             var GIPHY_PUB_KEY = 'dc6zaTOxFJmzC';
@@ -56,13 +56,12 @@ App = React.createClass({
                         var gif = {  // 5.
                             url: data.fixed_width_downsampled_url,
                             sourceUrl: data.url
-                        }};
-                        callback(gif);  // 6.
-            };
+                        };
+                        resolve(gif);  // 6.
+            }};
             xhr.send();
-            resolve(this.response);
     })},
 
-  getGif(searchingText,callback)
+  getGif(searchingText)
   .then(response => callback(gif));
 });
